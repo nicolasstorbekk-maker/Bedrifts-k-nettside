@@ -105,7 +105,7 @@ if st.session_state["enheter"]:
     sok_kode     = st.session_state["sok_naeringskode"]
     sok_kommunen = st.session_state["sok_kommune"]
 
-    df = bygg_dataframe(st.session_state["enheter"])
+   df = bygg_dataframe(st.session_state["enheter"], st.session_state["sok_naeringskode"])
 
     st.success(
         f"Fant **{st.session_state['totalt']} bedrifter** "
@@ -132,4 +132,5 @@ if st.session_state["enheter"]:
         file_name=f"bedrifter_{sok_kode.replace('.','_')}_{sok_kommunen}.xlsx",
         mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
         use_container_width=False  
+
     )

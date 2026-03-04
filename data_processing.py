@@ -1,10 +1,16 @@
 import pandas as pd
 
 
-def bygg_dataframe(enheter: list) -> pd.DataFrame:
+def bygg_dataframe(enheter: list, naeringskode_filter: str) -> pd.DataFrame:
     resultater = []
 
     for enhet in enheter:
+
+        kode = enhet.get("naeringskode1", {}).get("kode", "")
+        if not kode.startswith(naeringskode_filter):
+            continue  # hopp over denne bedriften
+
+
         adresse_obj = enhet.get("forretningsadresse") or enhet.get("postadresse") or {}
         adresse_str = ", ".join([a for a in adresse_obj.get("adresse", []) if a])
         poststed = adresse_obj.get("poststed", "")

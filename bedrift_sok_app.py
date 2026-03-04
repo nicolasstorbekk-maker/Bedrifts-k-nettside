@@ -105,7 +105,7 @@ if st.session_state["enheter"]:
     sok_kode     = st.session_state["sok_naeringskode"]
     sok_kommunen = st.session_state["sok_kommune"]
 
-   df = bygg_dataframe(st.session_state["enheter"], st.session_state["sok_naeringskode"])
+    df = bygg_dataframe(st.session_state["enheter"], st.session_state["sok_naeringskode"])
 
     st.success(
         f"Fant **{st.session_state['totalt']} bedrifter** "
@@ -134,3 +134,4 @@ if st.session_state["enheter"]:
         use_container_width=False  
 
     )
+
